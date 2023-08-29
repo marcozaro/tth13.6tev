@@ -1,0 +1,974 @@
+\documentclass[a4paper,usenames,dvipsnames,11pt]{article}
+\pdfoutput=1
+
+%% packages
+\usepackage{jheppub}
+\usepackage{slashed}
+\usepackage{mathrsfs,booktabs,multirow,tabularx}
+\usepackage{stmaryrd}
+\usepackage{xspace}
+\usepackage{fancyvrb}
+\usepackage[makeroom]{cancel}
+\usepackage{amsmath}    % need for subequations
+\usepackage{amssymb}    % 
+\usepackage{graphicx}   % need for figures
+\usepackage{verbatim}   % useful for program listings
+\usepackage{lscape}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{enumerate}
+
+%\usepackage[nomarkers]{endfloat}
+
+
+%
+\renewcommand\arraystretch{1.1}
+%\setlength{\textfloatsep}{10pt plus 1.0pt minus 2.0pt}
+
+%NOTE: \beq and \eeq will not work if using amsmath. 
+%Use \beqn and \eeqn instead
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\beqn{\begin{eqnarray}}
+\def\eeqn{\end{eqnarray}}
+\def\abs#1{\left|#1\right|}
+\def\IN{{\small IN}}
+\def\OUT{{\small OUT}}
+\def\remove#1#2{#1\hspace{-#2truecm}\backslash}
+\def\removeb#1#2#3{#1\hspace{-#2truecm}\backslash\hspace{-#3truecm}\slash}
+\def\red{}
+\def\xidistr#1{\left(\frac{1}{\xi}\right)_{\!#1}}
+\def\pdistr#1#2{\left(\frac{1}{#1}\right)_{\!#2}}
+\def\lxidistr#1{\left(\frac{\log\xi}{\xi}\right)_{\!#1}}
+\def\lpdistr#1#2{\left(\frac{\log#1}{#1}\right)_{\!#2}}
+\def\lppdistr#1#2{\left(\frac{\log\left(#1\right)}{#1}\right)_{\!#2}}
+\def\ypdistr#1{\left(\frac{1}{1-y}\right)_{\!#1}}
+\def\FKSeq#1{eq.~({\bf II}.#1)}
+\def\MadFKSeq#1{eq.~({\bf I}.#1)}
+\def\set#1#2#3{\left\{#1\right\}_{#2,#3}}
+\def\setS#1#2#3#4{\left\{#1\right\}_{#2,#3}^{[#4]}}
+\def\oset#1#2#3{\left(#1\right)_{#2,#3}}
+\def\binomial#1#2{
+\left(\!\!
+\begin{array}{c}
+#1\\
+#2
+\end{array}
+\!\!\right)
+}
+
+%%CMS stuff (to be removed or included elsewhere)
+\newcommand{\bqa}{\begin{eqnarray}}
+\newcommand{\eqa}{\end{eqnarray}}
+% A small hack to have coloured comment in the tex file  without using colour package
+% It's ok since there will be no comments left for the final version
+\chardef\MyArticleWithColor=\pdfcolorstackinit page direct{0 g}
+\def\cmtVH#1{\emph{\pdfcolorstack\MyArticleWithColor push {1 0 0 rg} V.H. : #1 \pdfcolorstack\MyArticleWithColor pop}}
+\def\cmtHS#1{\emph{\pdfcolorstack\MyArticleWithColor push {0 1 0 rg} H.S. : #1 \pdfcolorstack\MyArticleWithColor pop}}
+\newcommand{\plaat}[3]{\raisebox{#3pt}{\epsfig{figure=#1.pdf,width=#2cm}}}
+%%\newcommand{\plaat}[3]{\raisebox{#3pt}{\epsfig{figure=#1.eps,width=#2cm}}}
+%%\newcommand{\plaat}[3]{\raisebox{#3pt}{\includegraphics[width=#2cm]{#1-eps-converted-to.pdf}}}
+\def\cCode#1{\begin{lstlisting}[mathescape,basicstyle=\small
+\ttfamily,frame=leftline,aboveskip=4mm,belowskip=4mm,xleftmargin=20pt,framexleftmargin=10pt,
+numbers=none,framerule=2pt,abovecaptionskip=0.0mm,belowcaptionskip=3.5mm #1]}
+
+
+\newcommand\sss{\scriptscriptstyle}
+\newcommand\alphas{\alpha_S}
+\newcommand\yt{y_t}
+\newcommand\tth{t\bar t H}
+%\newcommand\sss{}
+\newcommand\mydot{\!\cdot\!}
+\newcommand\ep{\epsilon}
+\newcommand\half{\frac{1}{2}}
+\newcommand\quarter{\frac{1}{4}}
+\newcommand\as{\alpha_{\sss S}}
+\newcommand\gs{g_{\sss S}}
+\newcommand\aW{\alpha_{\sss W}}
+\newcommand\gW{g_{\sss W}}
+\newcommand\aem{\alpha}
+%\newcommand\alo{\alpha_1}
+%\newcommand\alt{\alpha_2}
+\newcommand\alo{\as}
+\newcommand\alt{\aem}
+\newcommand{\tev}{\,\textrm{TeV}}
+\newcommand{\gev}{\,\textrm{GeV}}
+\newcommand{\mev}{\,\textrm{MeV}}
+\newcommand\bQ{\bar{Q}}
+\newcommand\bt{\bar{t}}
+\newcommand\aNLO{{\sc\small MadGraph5\_aMC@NLO}}
+\newcommand\aNLOs{{\sc\small MG5\_aMC}}
+\newcommand\MadGraph{{\sc\small MadGraph}}
+\newcommand{\mgatnlo}{\aNLOs\xspace}
+\newcommand{\mg}{\aNLOs\xspace}
+\newcommand\UFO{{\sc\small UFO}}
+\newcommand\mf{{\sc\small MadFKS}}
+\newcommand\ml{{\sc\small MadLoop}}
+\newcommand\ct{{\sc\small CutTools}}
+\newcommand\nin{{\sc\small Ninja}}
+\newcommand\collier{{\sc\small Collier}}
+\newcommand\IREGI{{\sc\small IREGI}}
+\newcommand\aMCSusHi{{\sc\small aMCSusHi}}
+\newcommand\SusHi{{\sc\small SusHi}}
+\newcommand\mgamc{\aNLO}
+\newcommand\HWpp{{\sc\small Herwig++}}
+\newcommand\HWsv{{\sc\small Herwig7}}
+\newcommand\PYe{{\sc\small Pythia8}}
+\newcommand\HWs{{\sc\small Herwig6}}
+\newcommand\FJ{{\sc\small FastJet}}
+\newcommand\lhapdfs{{\sc\small LHAPDF6}}
+\newcommand\recola{{\sc\small RECOLA}}
+\newcommand\sherpa{{\sc\small Sherpa}}
+\newcommand\alpgen{{\sc\small AlpGen}}
+\newcommand\gosam{{\sc\small GoSam}}
+\newcommand\maddip{{\sc\small MadDipole}}
+\newcommand\OL{{\sc\small OpenLoops}}
+\newcommand{\FeynRules}{{\sc \small FeynRules}}
+\newcommand{\feynrules}{\FeynRules}
+\newcommand{\nloct}{{\sc \small NloCt}}
+\newcommand\prompt{{\tt MG5\_aMC>}}
+\newcommand\pt{p_{\sss T}}
+\newcommand\pti{p_{{\sss T},i}}
+\newcommand\kt{k_{\sss T}}
+\newcommand{\Ht}{H_{\sss T}}
+\newcommand{\LO}{{\rm LO}}
+\newcommand{\LOi}{{\rm LO}_i}
+\newcommand{\LOipo}{{\rm LO}_{i+1}}
+\newcommand{\LOo}{{\rm LO}_1}
+\newcommand{\LOt}{{\rm LO}_2}
+\newcommand{\LOth}{{\rm LO}_3}
+\newcommand{\LOf}{{\rm LO}_4}
+\newcommand{\NLO}{{\rm NLO}}
+\newcommand{\NLOi}{{\rm NLO}_i}
+\newcommand{\NpLOi}{{\rm N}^p{\rm LO}_i}
+\newcommand{\NLOipo}{{\rm NLO}_{i+1}}
+\newcommand{\NLOo}{{\rm NLO}_1}
+\newcommand{\NLOt}{{\rm NLO}_2}
+\newcommand{\NLOth}{{\rm NLO}_3}
+\newcommand{\NLOf}{{\rm NLO}_4}
+\newcommand{\NLOfv}{{\rm NLO}_5}
+\newcommand{\NLOgt}{{\rm NLO}_{\ge 2}}
+\newcommand{\NLOgth}{{\rm NLO}_{\ge 3}}
+\newcommand{\MSb}{\overline{\rm MS}}
+\newcommand{\epUV}{\varepsilon_{\rm\sss UV}}
+\newcommand{\bepUV}{\bar{\varepsilon}_{\rm\sss UV}}
+\newcommand{\epIR}{\varepsilon_{\rm\sss IR}}
+\newcommand{\OS}{{\rm OS}}
+\newcommand{\BW}{{\rm BW}}
+\newcommand{\stepf}{\Theta}
+\newcommand\muF{\mu_{\sss F}}
+\newcommand\muR{\mu_{\sss R}}
+\newcommand{\ttv}{t\bar{t}V}
+\newcommand{\ttV}{\ttv}
+\newcommand{\nmax}{{\tt n_{\tt max}}}
+\newcommand{\mmax}{{\tt m_{\tt max}}}
+\newcommand\FKSpairs{{\cal P}_{\sss\rm FKS}}
+\newcommand\ren{{\rm R}}
+\newcommand\unren{{\rm U}}
+\newcommand\oG{\overline{G}}
+\newcommand\vertmuCM{{\cal V}^{(0)\mu}_{\rm CM}}
+\newcommand\vertnuCM{{\cal V}^{(0)\nu}_{\rm CM}}
+\newcommand\vertmuZW{{\cal V}^{(0)\mu}_{\rm ZW}}
+\newcommand\vertnuZW{{\cal V}^{(0)\nu}_{\rm ZW}}
+\newcommand\bM{\bar{M}}
+\newcommand\bGa{\bar{\Gamma}}
+\newcommand\bga{\bar{\gamma}}
+\newcommand\bMW{\bM_W}
+\newcommand\bGaW{\bGa_W}
+\newcommand\bMZ{\bM_Z}
+\newcommand\bGaZ{\bGa_Z}
+\newcommand\ZW{{\rm ZW}}
+\newcommand\CM{{\rm CM}}
+
+
+%%%%madqed.tex
+\newcommand{\bq}{\bar{q}}
+\newcommand{\epem}{e^+e^-}
+\newcommand{\mpmm}{\mu^+\mu^-}
+\newcommand{\ord}{{\cal O}}
+\newcommand{\Sfun}{{\cal S}}
+\newcommand{\Sfunij}{\Sfun_{ij}}
+\newcommand\asotpi{\frac{\as}{2\pi}}
+\newcommand\aotpi{\frac{\aem}{2\pi}}
+\newcommand\muoQ{\frac{\mu^2}{Q^2}}
+\newcommand\muoQep{\left(\frac{\mu^2}{Q^2}\right)^\ep}
+\newcommand\Dz{{\cal D}^{(0)}}
+\newcommand\Do{{\cal D}^{(1)}}
+\newcommand\madfks{{\sc\small MadFKS}}
+\newcommand\Tt{{\rm T}}
+\newcommand\QCD{{\rm QCD}}
+\newcommand\QED{{\rm QED}}
+\newcommand\proc{r}
+\newcommand\nini{n_{\sss I}}
+\newcommand\nlight{n_{\sss L}}
+\newcommand\nlightB{\nlight^{\sss (B)}}
+\newcommand\nlightR{\nlight^{\sss (R)}}
+\newcommand\nlightBorR{\nlight^{\sss (B/R)}}
+\newcommand\nheavy{n_{\sss H}}
+\newcommand\nzero{n_\emptyset}
+\newcommand\ident{{\cal I}}
+\newcommand\Ione{\ident_1}
+\newcommand\Itwo{\ident_2}
+\newcommand\amp{{\cal A}}
+\newcommand\ampmt{\amp^{(m,0)}}
+\newcommand\ampnt{\amp^{(n,0)}}
+\newcommand\ampnpot{\amp^{(n+1,0)}}
+\newcommand\ampnl{\amp^{(n,1)}}
+\newcommand\ampsq{{\cal M}}
+\newcommand\ampsqmt{\ampsq^{(m,0)}}
+\newcommand\ampsqnt{\ampsq^{(n,0)}}
+\newcommand\ampsqnpot{\ampsq^{(n+1,0)}}
+\newcommand\ampsqnl{\ampsq^{(n,1)}}
+\newcommand\vampsqnl{{\cal V}^{(n,1)}}
+\newcommand\hvampsqnl{\hat{\cal V}^{(n,1)}}
+\newcommand\vampsqnlF{{\cal V}^{(n,1)}_{\sss FIN}}
+\newcommand\hvampsqnlF{\hat{\cal V}^{(n,1)}_{\sss FIN}}
+\newcommand\tampsq{\widetilde{\cal M}}
+\newcommand\tampsqnt{\tampsq^{(n,0)}}
+\newcommand\tampsqnpot{\tampsq^{(n+1,0)}}
+\newcommand\Qop{\vec{Q}}
+\newcommand\Qops{Q}
+\newcommand\JetsB{J^{\nlightB}}
+\newcommand\JetsR{J^{\nlightB+1}}
+\newcommand\velkl{v_{kl}}
+\newcommand\avg{{\cal N}}
+\newcommand\xicut{\xi_{cut}}
+\newcommand\deltaO{\delta_{\sss O}}
+\newcommand\deltaI{\delta_{\sss I}}
+\newcommand\NC{N_{\sss c}}
+\newcommand\CA{C_{\sss A}}
+\newcommand\CF{C_{\sss F}}
+\newcommand\TF{T_{\sss F}}
+\newcommand\DA{D_{\sss A}}
+\newcommand\nC{n_{\sss c}}
+\newcommand\NF{N_{\sss F}}
+\newcommand\Nl{N_l}
+\newcommand\eikint{{\cal E}}
+\newcommand\phsp{d\phi}
+\newcommand\phspn{\phsp_{n}}
+\newcommand\phspnpo{\phsp_{n+1}}
+\newcommand\mua{\mu_\alpha}
+
+\newcommand\ampzCM{\amp^{(0)}_{\rm CM}}
+\newcommand\ampzZW{\amp^{(0)}_{\rm ZW}}
+
+%%%%fksfrag.tex
+\newcommand{\bb}{\bar{b}}
+\newcommand\ampsqttw{\ampsq^{(2,0)}}
+\newcommand\ampsqtth{\ampsq^{(3,0)}}
+\newcommand\ampsqltw{\ampsq^{(2,1)}}
+\newcommand\epb{\overline{\epsilon}}
+\newcommand\xii{\xi_i}
+\newcommand\xij{\xi_j}
+\newcommand\xik{\xi_k}
+\newcommand\xia{\xi_\alpha}
+\newcommand\xib{\xi_\beta}
+\newcommand\xinpf{\xi_{n+4}}
+\newcommand\xic{\xi_c}
+\newcommand\xiip{\xi_i^\prime}
+\newcommand\xicp{\xi_c^\prime}
+\newcommand\cp{c^\prime}
+\newcommand\yi{y_i}
+\newcommand\yj{y_j}
+\newcommand\ya{y_\alpha}
+\newcommand\yb{y_\beta}
+\newcommand\phii{\varphi_i}
+\newcommand\phij{\varphi_j}
+\newcommand\ynpf{y_{n+4}}
+\newcommand\vol{{\cal V}}
+
+
+%%%%results_section.tex
+\newcommand{\pnote}[1]{ \textbf{[DP:} \textit{\color{red} #1}\textbf{]}}
+\newcommand{\LOone}{\ensuremath{\LOo}\xspace}
+\newcommand{\LOtwo}{\ensuremath{\LOt}\xspace}
+\newcommand{\LOthree}{\ensuremath{\LOth}\xspace}
+\newcommand{\LOfour}{\ensuremath{\LOf}\xspace}
+\newcommand{\NLOone}{\ensuremath{\NLOo}\xspace}
+\newcommand{\NLOtwo}{\ensuremath{\NLOt}\xspace}
+\newcommand{\NLOthree}{\ensuremath{\NLOth}\xspace}
+\newcommand{\NLOfour}{\ensuremath{\NLOf}\xspace}
+\newcommand{\NLOfive}{\ensuremath{\NLOfv}\xspace}
+\newcommand{\NLOgetwo}{\ensuremath{\NLOgt}\xspace}
+\newcommand{\NLOgethree}{\ensuremath{\NLOgth}\xspace}
+
+\def\NLOQCD{{\rm NLO_{QCD}}}
+\def\LOQCD{{\rm LO_{QCD}}}
+\def\NLOQCDt{\NLO_{{\rm QCD},t{\rm -ch.}}}
+\def\NLOQCDEW{\NLO_{{\rm QCD+EW}}}
+\def\NLOEW{\rm NLO_{EW}}
+
+
+%%%%citation_summary.tex
+\newcommand{\mh}{m_{ \sss H}}
+\newcommand{\mw}{m_{ \sss W}}
+\newcommand{\mz}{m_{ \sss Z}}
+\newcommand{\mt}{m_{t}}
+%\newcommand{\mh}{m_H}
+%\newcommand{\mw}{m_W}
+%newcommand{\mz}{m_Z}
+%\newcommand{\mt}{m_t}
+%\newcommand{\hw}{h_{\sss W}}
+
+
+%%%%CMS_section.tex or whereabout
+\newcommand{\SMWidth}{{\sc\small SMWidth}}
+\newcommand{\FeynArts}{{\sc\small FeynArts}}
+\newcommand{\HDecay}{{\sc\small HDecay}}
+\newcommand{\OneLoop}{{\sc\small OneLoop}}
+\newcommand{\MGaMC}{\aNLOs}
+\newcommand{\MadLoop}{\ml}
+
+%%%%%%%%%%%%%%% DENNER definitions %%%%%%%%%%%%
+
+%% Abbreviations for environments
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\beqar{\begin{eqnarray}}
+\def\eeqar{\end{eqnarray}}
+\def\barr#1{\begin{array}{#1}}
+\def\earr{\end{array}}
+\def\bfi{\begin{figure}}
+\def\efi{\end{figure}}
+\def\btab{\begin{table}}
+\def\etab{\end{table}}
+\def\bce{\begin{center}}
+\def\ece{\end{center}}
+\def\nn{\nonumber}
+\def\nl{\nonumber\\}
+
+%% shorthands for greek letters
+\def\al{\alpha}
+\def\be{\beta}
+%\def\Ga{\Gamma}
+\def\ga{\gamma}
+\def\de{\delta}
+%\def\De{\Delta}%\def\eps{\epsilon}
+%\def\veps{\varepsilon}
+\def\la{\lambda}
+%\def\om{\omega}
+%\def\Om{\Omega}
+\def\si{\sigma}
+\def\Si{\Sigma}
+%\def\vth{\vartheta}
+%\def\ieps{\ri\epsilon}
+
+%% new commands for cross referencing
+\def\refeq#1{\mbox{(\ref{#1})}}
+\def\reffi#1{\mbox{Figure~\ref{#1}}}
+\def\reffis#1{\mbox{Figures~\ref{#1}}}
+\def\refta#1{\mbox{Table~\ref{#1}}}
+\def\reftas#1{\mbox{Tables~\ref{#1}}}
+\def\refse#1{\mbox{Section~\ref{#1}}}
+\def\refses#1{\mbox{Sections~\ref{#1}}}
+\def\refapp#1{\mbox{App.~\ref{#1}}}
+\def\citere#1{\mbox{Ref.~\cite{#1}}}
+\def\citeres#1{\mbox{Refs.~\cite{#1}}}
+
+%%physical units
+\newcommand{\TeV}{\unskip\,\mathrm{TeV}}
+\newcommand{\GeV}{\unskip\,\mathrm{GeV}}
+\newcommand{\MeV}{\unskip\,\mathrm{MeV}}
+%\newcommand{\pba}{\unskip\,\mathrm{pb}}
+%\newcommand{\fb}{\unskip\,\mathrm{fb}}
+
+%% roman symbols
+\newcommand{\ri}{{\mathrm{i}}}
+\newcommand{\rd}{{\mathrm{d}}}
+\newcommand{\rS}{{\mathrm{S}}}
+\newcommand{\rR}{{\mathrm{R}}}
+\newcommand{\rT}{{\mathrm{T}}}
+\newcommand{\rL}{{\mathrm{L}}}
+
+%% calligraphic symbols
+\renewcommand{\O}{{\cal O}}
+%\newcommand{\Oa}{\mathswitch{{\cal{O}}(\alpha)}}
+%\newcommand{\Oaa}{\mathswitch{{\cal{O}}(\alpha^2)}}
+\newcommand{\M}{{\cal{M}}}
+\newcommand{\Mew}{{\tilde{\cal{M}}}}
+
+% physical particles
+%\def\mathswitchr#1{\relax\ifmmode{\mathrm{#1}}\else$\mathrm{#1}$\fi}
+\def\mathswitchr#1{#1}
+\newcommand{\PW}{\mathswitchr W}
+\newcommand{\PB}{\mathswitchr B}
+\newcommand{\PZ}{\mathswitchr Z}
+\newcommand{\PA}{\mathswitchr A}
+\newcommand{\PH}{\mathswitchr H}
+\newcommand{\Pf}{\mathswitch f}
+\newcommand{\Pfbar}{\mathswitch \bar f}
+\newcommand{\Pe}{\mathswitchr e}
+\newcommand{\Pd}{\mathswitchr d}
+\newcommand{\Pu}{\mathswitchr u}
+\newcommand{\Ps}{\mathswitchr s}
+\newcommand{\Pc}{\mathswitchr c}
+\newcommand{\Pb}{\mathswitchr b}
+\newcommand{\Pt}{\mathswitchr t}
+\newcommand{\Pep}{\mathswitchr {e^+}}
+\newcommand{\Pem}{\mathswitchr {e^-}}
+\newcommand{\PWp}{\mathswitchr {W^+}}
+\newcommand{\PWm}{\mathswitchr {W^-}}
+\newcommand{\PWpm}{\mathswitchr {W^\pm}}
+
+% particle masses
+\def\mathswitch#1{\relax\ifmmode#1\else$#1$\fi}
+\newcommand{\MW}{\mathswitch {M_\PW}}
+\newcommand{\MZ}{\mathswitch {M_\PZ}}
+\newcommand{\MH}{\mathswitch {M_\PH}}
+\newcommand{\MHt}{\mathswitch {M_{\PH,\Pt}}}
+\newcommand{\Me}{\mathswitch {m_\Pe}}
+%\newcommand{\Md}{\mathswitch {m_\Pd}}
+%\newcommand{\Mu}{\mathswitch {m_\Pu}}
+%\newcommand{\Ms}{\mathswitch {m_\Ps}}
+%\newcommand{\Mc}{\mathswitch {m_\Pc}}
+%\newcommand{\Mb}{\mathswitch {m_\Pb}}
+\newcommand{\Mt}{\mathswitch {m_\Pt}}
+\newcommand{\Mb}{\mathswitch {m_\Pb}}
+\newcommand{\GW}{\Gamma_{\PW}}
+\newcommand{\GZ}{\Gamma_{\PZ}}
+
+\newcommand{\ntad}{n_{\rm tad}}
+
+% shorthands for SM parameters
+\newcommand{\thw}{\mathswitch {\theta_\mathrm{w}}}
+\newcommand{\cw}{\mathswitch {c_\mathrm{w}}}
+\newcommand{\sw}{\mathswitch {s_\mathrm{w}}}
+\newcommand{\GF}{\mathswitch {G_\mu}}
+\newcommand{\NCf}{\mathswitch {N_{\mathrm{C}}^f}}
+\newcommand{\NCt}{\mathswitch {N_{\mathrm{C}}^{\Pt}}}
+
+% mathematical symbols
+\newcommand{\lsim}
+{\mathrel{\raisebox{-.3em}{$\stackrel{\displaystyle <}{\sim}$}}}
+\newcommand{\gsim}
+{\mathrel{\raisebox{-.3em}{$\stackrel{\displaystyle >}{\sim}$}}}
+\newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\U}{\mathrm{U}}
+\newcommand{\SUtwo}{\mathrm{SU(2)}}
+\newcommand{\Uone}{\mathrm{U}(1)}
+
+% various abbreviations
+\def\ie{i.e.\ }
+\def\eg{e.g.\ }
+\def\cf{cf.\ }
+
+%\newcommand{\br}{{\mathrm{br}}}
+%\newcommand{\QCD}{{\mathrm{QCD}}}
+%\newcommand{\QED}{{\mathrm{QED}}}
+%\newcommand{\SM}{{\mathrm{SM}}}
+%\newcommand{\Born}{{\mathrm{Born}}}
+%\newcommand{\born}{{\mathrm{Born}}}
+%\newcommand{\corr}{{\mathrm{corr}}}
+%\newcommand{\onel}{{\mathrm{1-loop}}}
+\newcommand{\elm}{{\mathrm{em}}}
+\newcommand{\ew}{{\mathrm{ew}}}
+\newcommand{\sew}{{\mathrm{ew}}}
+\newcommand{\htop}{{H,t}}
+\newcommand{\weak}{{\mathrm{weak}}}
+%\newcommand{\cut}{{\mathrm{cut}}}
+%\newcommand{\SB}{{\mathrm{SB}}}
+%\newcommand{\CMS}{{\mathrm{CMS}}}
+%\newcommand{\CC}{{\mathrm{CC}}}
+%\newcommand{\NC}{{\mathrm{NC}}}
+\newcommand{\real}{{\mathrm{real}}}
+\newcommand{\virt}{{\mathrm{virt}}}
+\newcommand{\soft}{{\mathrm{soft}}}
+\newcommand{\coll}{{\mathrm{coll}}}
+\newcommand{\rem}{{\mathrm{rem}}}
+\newcommand{\symm}{{\mathrm{symm}}}
+\newcommand{\asymm}{{\mathrm{asymm}}}
+\newcommand{\fact}{{\mathrm{fact}}}
+\newcommand{\nonfact}{{\mathrm{nfact}}}
+%\renewcommand{\min}{{\mathrm{min}}}
+%\renewcommand{\max}{{\mathrm{max}}}
+\newcommand{\SC}{{\mathrm{LSC}}}
+\renewcommand{\SS}{{\mathrm{SSC}}}
+\newcommand{\cc}{{\mathrm{C}}}
+\newcommand{\s}{{\mathrm{s}}}
+\newcommand{\pre}{{\mathrm{PR}}}
+\newcommand{\Yuk}{{\mathrm{Yuk}}}
+
+%% commands for this paper
+\newcommand{\eeWW}{{\Pe^+ \Pe^-\to \PW^+ \PW^-}}
+\newcommand{\Wpff}{{\PW^+ \to f_1\bar f_2}}
+\newcommand{\Wmff}{{\PW^- \to f_3\bar f_4}}
+\newcommand{\eeWWffff}{\Pep\Pem\to\PW\PW\to 4f}
+\newcommand{\eeffff}{\Pep\Pem\to 4f}
+\newcommand{\eeffffg}{\eeffff\ga}
+%\newcommand{\bew}{\beta^{\ew}}
+%\newcommand{\besw}{\tilde{\beta}^{\ew}}
+\newcommand{\bew}{b^{\ew}}
+\newcommand{\besw}{\tilde{b}^{\ew}}
+
+\newcommand{\cew}{C^{\ew}}
+\newcommand{\csew}{\tilde{C}^{\ew}}
+\newcommand{\dew}{D^{\ew}}
+\newcommand{\dsew}{\tilde{D}^{\ew}}
+\newcommand{\sNB}{\tilde{\NB}}
+\newcommand{\NB}{N}
+\newcommand{\GB}{V}
+
+% shorthands for energy dependent single logarithms
+\newcommand{\ls}{l(s)}
+\newcommand{\lu}{l(\mu^2)}
+\newcommand{\lQ}{l(Q^2)}
+\newcommand{\lrM}{l(r_{kl},M^2)}
+\newcommand{\lrMwithabs}{l(|r_{kl}|,M^2)}
+\newcommand{\lrW}{l(r_{kl},\MW^2)}
+\newcommand{\lrZ}{l(r_{kl},\MZ^2)}
+\newcommand{\lsMa}{l(s,M_{\GB_a}^2)}
+\newcommand{\lsM}{l(s,M^2)}
+\newcommand{\lsW}{l(s,\MW^2)}
+\newcommand{\lsf}{l(s,m_f^2)}
+\newcommand{\lmuf}{l(\mu^2,m_f^2)}
+\newcommand{\lmuZ}{l(\mu^2,\MZ^2)}
+\newcommand{\lmuW}{l(\mu^2,\MW^2)}
+\newcommand{\lsl}{l_{\cc}}
+\newcommand{\lpr}{l_{\pre}}
+\newcommand{\lYuk}{l_{\Yuk}}
+\newcommand{\lZ}{l_{\PZ}}
+% shorthands for constant single logarithms
+\newcommand{\lWf}{l(\MW^2,m_f^2)}
+\newcommand{\lWfnew}{l^{\rm reg}(\MW^2,m_f^2)}
+\newcommand{\lWfsi}{l(\MW^2,m_{f_\si}^2)}
+\newcommand{\lWk}{l(\MW^2,m_k^2)}
+\newcommand{\lWla}{l(\MW^2,\la^2)}
+\newcommand{\lWlanew}{l(\MW^2,Q^2)}
+\newcommand{\lWlanewmu}{l(\MW^2,\mu^2)}
+
+\newcommand{\lWfsii}{l(\MW^2,m_{f_{\si,i}}^2)}
+\newcommand{\lWNB}{l(\MW^2,M_\NB^2)}
+\newcommand{\lWa}{l(\MW^2,M_{\GB_a}^2)}
+\newcommand{\lWZ}{l(\MW^2,\MZ^2)}
+\newcommand{\lWM}{l(\MW^2,M^2)}
+\newcommand{\ltW}{l(\Mt^2,\MW^2)}
+\newcommand{\lHW}{l(\MH^2,\MW^2)}
+% shorthands for electromagnetic single logarithms
+%\newcommand{\lemf}{l^\elm(\lambda^2,m_f^2)}
+%\newcommand{\lemk}{l^\elm(\lambda^2,m_{k}^2)}
+%\newcommand{\leme}{l^\elm(\lambda^2,m_\Pe^2)}
+%\newcommand{\lemW}{l^\elm(\lambda^2,\MW^2)}
+\newcommand{\lemf}{l^\elm(m_f^2)}
+\newcommand{\lemftau}{l^\elm(m_{f_\tau}^2)}
+\newcommand{\lemfsi}{l^\elm(m_{f_\si}^2)}
+\newcommand{\lemfsinew}{l^\elm(Q^2)}
+\newcommand{\lem}{l^\elm(m^2)}
+\newcommand{\lemk}{l^\elm(m_{k}^2)}
+\newcommand{\lemphi}{l^\elm(m_{\varphi}^2)}
+\newcommand{\leme}{l^\elm(m_\Pe^2)}
+\newcommand{\lemW}{l^\elm(\MW^2)}
+% shorthands for energy dependent double logarithms
+\newcommand{\Ls}{L(s)}
+\newcommand{\LrM}{L(|r_{kl}|,M^2)}
+\newcommand{\LrMnoabs}{L(r_{kl},M^2)}
+\newcommand{\Lrs}{L(|r_{kl}|,s)}
+\newcommand{\LrMa}{L(|r_{kl}|,M_{\GB_a}^2)}
+\newcommand{\LsM}{L(s,M^2)}
+\newcommand{\LsW}{L(s,\MW^2)}
+\newcommand{\LsZ}{L(s,\MZ^2)}
+\newcommand{\Lsla}{L(s,\lambda^2)}
+% shorthands for constant double logarithms
+\newcommand{\Lkla}{L(m_k^2,\la^2)}
+\newcommand{\Lklanew}{L^{\rm{reg}}(m_k^2,Q^2)}
+
+\newcommand{\LWk}{L(\MW^2,m_k^2)}
+\newcommand{\LWf}{L(\MW^2,m_f^2)}
+\newcommand{\LZW}{L(\MZ^2,\MW^2)}
+\newcommand{\LWla}{L(\MW^2,\lambda^2)}
+\newcommand{\LWlanew}{L(\MW^2,Q^2)}
+
+% shorthands for electromagnetic double logarithms
+\newcommand{\Lemk}{L^\elm(s,\lambda^2,m_k^2)}
+\newcommand{\Lemknew}{L^\elm(s,Q^2,m_k^2)}
+
+\newcommand{\Lemphi}{L^\elm(s,\lambda^2,m_\varphi^2)}
+\newcommand{\Lemf}{L^\elm(s,\lambda^2,m_f^2)}
+\newcommand{\Lemftau}{L^\elm(s,\lambda^2,m_{f_\tau}^2)}
+\newcommand{\Leme}{L^\elm(s,\lambda^2,m_e^2)}
+\newcommand{\LemW}{L^\elm(s,\lambda^2,\MW^2)}
+% shorthands for angular logarithms
+%\newcommand{\ltu}{\log{\left(\frac{t}{u}\right)}}
+%\newcommand{\lts}{\log{\left(\frac{|t|}{s}\right)}}
+%\newcommand{\lus}{\log{\left(\frac{|u|}{s}\right)}}
+\newcommand{\lrs}{\log{\frac{|r_{kl}|}{s}}}
+\newcommand{\lrsalpha}{l(|r_{kl}|,s)}
+
+\newcommand{\ltu}{\log{\frac{t}{u}}}
+\newcommand{\lts}{\log{\frac{|t|}{s}}}
+\newcommand{\lus}{\log{\frac{|u|}{s}}}
+\newcommand{\lsu}{\log{\frac{s}{|u|}}}
+
+  \newcommand{\TO}{\rightarrow}
+\newcommand{\mglong}{{\sc\small Mad\-Graph5\_aMC\-@NLO}}
+\newcommand{\HELAS}{{\sc\small Helas}}
+\newcommand{\ALOHA}{{\sc\small Aloha}}
+\newcommand{\mgshort}{{\sc\small MG5\_aMC}}
+%\newcommand{\denpoz}{Denner{\&}Pozzorini}
+\newcommand{\denpoz}{{\sc\small DP}}
+
+\newcommand{\deltaEW}{\delta^{\rm EW}_{\rm LA}}
+\newcommand{\deltaQCD}{\delta^{\rm QCD}_{\rm LA}}
+\newcommand{\Ltop}{L^t(s)}
+\def\Las#1{l^{\as}(#1)}
+\newcommand{\dmtQCD}{(\de\Mt)^{\rm QCD}}
+%L^t(Q^2) + \left(\frac{n_{\as}-1}{2}-n_{g}\right) L^{\as}(Q^2)
+ \newcommand{\MSbar}{{\rm \overline{MS}}}
+
+ \usepackage{comment}
+
+
+%%%%%%%%%%%%%%% DENNER definitions end %%%%%%%%%%
+
+%%mie definizioni%%%%%
+%\newcommand{\eeWW}{e^+e^-\longrightarrow W^+W^-}
+
+
+
+
+\title{$t\bar t H$ best of the best}
+
+
+\author[vi]{Alessandro Broggio}
+\author[ny]{Andrea Ferroglia}
+\author[lu]{Rikkert Frederix}
+\author[mi]{Marco Zaro}
+
+\affiliation[vi]{Faculty of Physics, University of Vienna, Boltzmanngasse 5, A-1090 Vienna, Austria}
+\affiliation[ny]{Physics Department, New York City College of Technology, 
+The City University of New York, 300 Jay Street, Brooklyn, NY 11201, USA \&
+The Graduate School and University Center, The City University of New York, 365 Fifth Avenue, New York, NY 10016, USA
+}
+
+\affiliation[lu]{Department of Physics, Lund University, SE-223 63 Lund, Sweden}
+\affiliation[mi]{TIFLab, Universit\`a degli Studi di Milano \& INFN, Sezione di Milano, Via Celoria 16, 20133 Milano, Italy}
+
+
+
+
+\emailAdd{alessandro.broggio@univie.ac.at}
+\emailAdd{rikkert.frederix@hep.lu.se}
+\emailAdd{marco.zaro@mi.infn.it}
+
+
+\abstract{\ldots}
+
+%\keywords{}
+%
+\preprint{
+\begin{flushright}
+%\today
+\end{flushright}
+}
+
+
+
+
+\begin{document}
+\maketitle
+\flushbottom
+\section{Introduction}
+\label{sec:intro}
+After the discovery of the Higgs boson at the Large Hadron Collider (LHC) at CERN~\cite{Aad:2012tfa,Chatrchyan:2012ufa}, an unprecedented campaign of measurements has begun. The aim
+of such a campaign is to thoroughly scrutinize the properties of the newly discovered particle, on the one hand to verify the consistency
+of the Standard Model (SM) of fundamental interactions, and on the other to exploit this particle as a magnifying glass for new, yet undiscovered
+physics interactions and phenomena. After more than one decade since the discovery, and at the dawn of the LHC Run III, the validity
+of the SM picture in the Higgs sector has been corroborated at the level of few percents CITE/CHECK. In order not only to achieve such an accuracy,
+but also to match the one of the Run III data, pushing the level of the theoretical predictions for the various production processes of the Higgs
+boson (and their backgrounds) has been, and will be mandatory. (REPORT ON THE VARIOUS PROCESSES?).
+
+Among the aspects being investigated about the Higgs boson, its coupling to fermions (quark and leptons) have been those for which the evidence
+is more recent. In fact, experimental evidence for the coupling of the Higgs boson to third-generation fermions 
+(top and bottom quarks, and the $\tau$ lepton)
+has taken up to six years after the discovery~\cite{CMS:2014wdm, CMS:2017odg,CMS:2018fdh,ATLAS:2018mme,ATLAS:2018kot,ATLAS:2018ynr},
+while for the second generation we know, since 2020, that the Higgs couples to muons~\cite{CMS:2020xwi}.
+The importance of accessing the Higgs coupling to the fermionic sectors stems from the fact that such couplings are mediated by a new interaction, the so-called Yukawa interaction, which was never observed among fundamental particles. Furthermore, since via the same interaction the fermions acquire their masses,
+Higgs-fermion interactions can shed the light on the hierarchy problem of fermion masses.
+
+Among all the fermions, the top quark is the heaviest, and therefore the one which experiences the strongest coupling to the Higgs boson. The
+top-Higgs Yukawa coupling, $\yt$,
+can be probed indirectly via the Higgs gluon-fusion production mode, where the top quark appears in a closed loop. The extraction
+of $\yt$ from such a process hence depends on the assumptions about new-physics, since heavy coloured states can also contribute in the loops.
+A direct, and model-independent measurement of $\yt$ can instead be achieved by looking at the Higgs production in association with a top-antitop pair,
+$\tth$. In fact, this was how evidence for the Higgs-top coupling was claimed in Ref.~CITE. 
+The computation of theoretical predictions including higher-orders in perturbation theory for $\tth$ production has begun two decades
+ago, with the first computations at Next-to-Leading Order in QCD~\cite{Reina:2001sf,Reina:2001bc,Dawson:2002tg}. About one decade later, the
+NLO EW corrections~\cite{Frixione:2014qaa,Zhang:2014gcy,Frixione:2015zaa}, and the so-called complete-NLO predictions~\cite{Frederix:2018nkq} have been computed. The complexity of the final state, with three massive particles, has prevented for long time the computation of even higher order predictions, at NNLO.
+Only very recently, NNLO predictions for $\tth$ have been published~\cite{Catani:2022mfv}, although with an approximate form of the two-loop virtual contribution.
+The unavailability of NNLO predictions lead to the estimate of higher-order effects via resummation techniques, notably for those contributions
+arising from soft-gluon radiations. These have been computed  by two different groups up to NNLL accuracy, Refs.~\cite{Broggio:2015lya,Broggio:2016lfj} and Refs.~\cite{Kulesza:2015vda,Kulesza:2017ukk}, and have subsequently been matched to the complete-NLO 
+predictions~\cite{ Kulesza:2018tqz,Broggio:2019ewu,Kulesza:2020nfh}. Differences in the resummation procedures employed by the two groups will be explained later in the paper.
+For what concern the simulation of differential observables, NLO QCD predictions matched to parton-shower simulations are also available CITE; more recently,
+the simulation of full off-shell effects, at NLO QCD CITE and at NLO EW CITE have been attained.
+
+In this work, we provide cross-section predictions for $\tth$ which will represent the new state-of-the-art
+for what concerns the inclusion of higher orders. Our prediction
+will include the NNLO prediciton of Ref.~\cite{Catani:2022mfv}, supplemented by the soft-gluon resummation contributions up to NNLL and the EW corrections.
+Besides the theoretical prediction, we provide a thorough estimate of theoretical uncertainties due to missing higher-orders, parton distribution
+functions, the strong coupling $\alphas$ and the top mass $\mt$. The paper is organised as follows: in Sec.~\ref{sec:theo}, we review
+the theoretical work which enters in our predictions; we present our results in Sec.~\ref{sec:results}, and we draw our conclusions in Sec.~\ref{sec:concl}.
+
+\section{Theoretical predictions}
+\label{sec:theo}
+In this section we describe the various theoretical ingredients which are necessary to obtain our predictions.
+
+\subsection{NNLO predictions}
+\label{sec:theo-nnlo}
+
+\subsection{NNLL resummation (Broggio et al)}
+\label{sec:theo-nnllb}
+
+\subsection{NNLL resummation (Kulesza et al)}
+\label{sec:theo-nnllk}
+
+\subsection{NLO EW and photon-induced contributions}
+\label{sec:theo-ew}
+
+\section{Numerical results}
+\label{sec:results}
+
+\subsection{Input parameters}
+\label{sec:results-input}
+Parameters and setups follow the recommendations from the LHC Higgs Working Group, and are chosen according to
+\url{https://twiki.cern.ch/twiki/bin/view/LHCPhysics/LHCHWG136TeVxsec}
+The numerical values for SM masses and parameters are \ldots
+
+Scale/PDFs
+
+\subsection{Cross sections}
+\label{sec:results-xsects}
+
+\subsection{Estimate of theoretical errors}
+\label{sec:results-therr}
+
+\section{Conclusions}
+\label{sec:concl}
+
+
+
+{\Large DUMP WHAT FOLLOWS}
+
+We report on the calculation of the updated reference cross sections for $t\bar t H$ and $t H$ production. Parameters and setups are chosen according to
+\url{https://twiki.cern.ch/twiki/bin/view/LHCPhysics/LHCHWG136TeVxsec}
+
+
+\section{$t\bar t H$}
+Known radiative corrections for $t \bar t H$ production at hadron colliders include NLO QCD corrections~\cite{Reina:2001sf,Reina:2001bc,Dawson:2002tg},
+NLO EW~\cite{Frixione:2014qaa,Zhang:2014gcy,Frixione:2015zaa} and complete NLO~\cite{Frederix:2018nkq} preictions, as well as predictions 
+beyond NLO QCD, where higher-order effects are either included via soft-gluon resummation, known up to 
+NNLL~\cite{Broggio:2015lya,Kulesza:2015vda,Broggio:2016lfj,Kulesza:2017ukk}, or by considering NNLO corrections with 
+an approximation of the (still unknown) two-loop
+amplitude~\cite{Catani:2022mfv}. We will refer to the latter as approximate-NNLO (aNNLO). Predictions obtained via resummation have been combined
+with the complete-NLO prediction~\cite{ Kulesza:2018tqz,Broggio:2019ewu,Kulesza:2020nfh}. 
+
+In the presentation of results, we will use the following labels for the different groups providing the results:
+\begin{enumerate}[I:]
+    \item Ref.~\cite{Broggio:2019ewu} (Broggio et al.).
+        The results have been obtained using the same calculation framework of Ref.~\cite{Broggio:2019ewu} with the  recommended input parameters. 
+        Predictions are therefore accurate at Complete-NLO accuracy, meaning all the QCD and EW perturbative orders stemming from tree-level 
+        and one-loop diagrams, matched to soft gluon emission corrections resummed to NNLL accuracy. We stress that the 
+        theory uncertainty has been obtained by combining two different dynamical-scale choices, as described in Ref.~\cite{Broggio:2019ewu}.
+        In particular, these two choices for the central scale are
+        \begin{equation}
+            \mu_0^{(1)}=\frac{H_T}{2}\,, \qquad \mu_0^{(2)}=\frac{m(t\bar t H)}{2}\,.
+        \end{equation}
+        The choice $\mu_0^{(1)}$ is employed for the central value of the predictions, while the scale-uncertainty band is evaluated by considering the 
+        envelope of the nine-point variations (by a factor 2 up/down) {\bf MZ CHECK!!} obtained with the two choice around the respective central value.
+        
+        Besides the input parameters, there is an other difference with  Ref.~\cite{Broggio:2019ewu}. Since results depend on the photon PDF, not provided
+        by the recommended PDF set (PDF4LHC21\_40), the following combination has been performed: the Complete-NLO prediction computed
+        with the aforementioned set has been reweighed with the ratio of the Complete-NLO prediction obtained with 
+        LUXqed17\_plus\_PDF4LHC15\_nnlo\_100 over the same prediction where the photon PDF has been set to zero. The corrections from the 
+        NNLL resummation have not been rescaled. We note that the impact of the photon PDF is about 0.68\% on the final result.
+    \item Refs.~\cite{Kulesza:2018tqz,Kulesza:2020nfh} (Kulesza et al.).
+        Scale setting: 
+        \begin{equation}
+            \mu_F=\mu_R=H_T/2\,.
+        \end{equation}
+        Scale uncertaintities: seven point method, i.e. maximal and minimal values of the seven combinations 
+        \begin{equation}
+        \left(\frac{\mu_F}{\mu_0},\frac{\mu_R}{\mu_0}\right)=(0.5,0.5),(0.5,1),(1,0.5),(1,1),(1,2),(2,1),(2,2)
+        \end{equation}
+        around the central
+        value $\left(\frac{\mu_F}{\mu_0},\frac{\mu_R}{\mu_0}\right)=(1,1)$.\\
+EW scheme for corrections: $G_\mu$ scheme.\\
+Pdfs: PDF4LHC21\_40\_pdfas~\cite{  } for QCD-initiated channels and LUXqed17\_plus\_PDF4LHC15\_nnlo\_100~\cite{  } for the photon-initiated channels.\\
+
+Inclusion of photon corrections: photon-initiated channels are included at NLO (output from aMC@NLO for these channels run with LUXqed17\_plus\_PDF4LHC15\_nnlo\_100 pdfs)
+    \item Ref.~\cite{Catani:2022mfv} (Catani et al.). Numbers are computed at the aNNLO QCD + complete-NLO accuracy. {\bf MZ preliminary numbers
+            do not include photonic contributions}.
+             The QCD scale uncertainties refer to a 7-point variation around the central scale 
+             \begin{equation}
+                  \mu_F=\mu_R=H_T/2\,,
+             \end{equation} 
+             but symmetrized by understanding the maximal deviation from the central-scale prediction among the 7-point variation points 
+             as the QCD scale uncertainty applied in both directions. The theoretical uncertainty contains the uncertainty due to the 
+             soft-Higgs approximation that we apply for the 2-loop amplitudes as well as statistical integration uncertainties 
+             and the uncertainty due to the $r_{\textrm{cut}}\to 0$ extrapolation in our $q_T$-slicing approach; it is, however, 
+             always dominated by the soft-approximation uncertainty.\\
+             Results for a set of different functional forms for the central scale are also presented in Tab.~\ref{tab:kallweit-scale}.
+\end{enumerate}
+The fixed-order part of I, II is computed using {\sc MadGraph5\_aMC@NLO}~\cite{Alwall:2014hca,Frederix:2018nkq}.
+
+% ttH
+\begin{landscape}
+\begin{table}
+    \centering
+    \begin{tabular}{cc|ccc|ccc|ccc|ccc|cc}
+         & & \multicolumn{3}{c}{$\mu=\frac{m_H}{2}+m_t$}  & 
+                                            \multicolumn{3}{c}{$\mu=\sum_{t,\bar t,H}\frac{E_T}{2}$}  &    
+                                            \multicolumn{3}{c}{$\mu=\frac{H_T}{2} $} &    
+                                            \multicolumn{3}{c}{$\mu=\frac{m(t\bar t H)}{2} $}\\
+        $\sqrt{s}$ [TeV]  &  $m_H$ [GeV]  &
+        $\sigma$ [fb] & $\delta_{\mu} + \delta_{\rm ThU}$ & $\delta_{\rm PDF}$ &
+        $\sigma$ [fb] & $\delta_{\mu} + \delta_{\rm ThU}$ & $\delta_{\rm PDF}$ &
+        $\sigma$ [fb] & $\delta_{\mu} + \delta_{\rm ThU}$ & $\delta_{\rm PDF}$ &
+        $\sigma$ [fb] & $\delta_{\mu} + \delta_{\rm ThU}$ & $\delta_{\rm PDF}$ 
+        \\
+        \hline
+         %n\input{table_ttH_kallweit} 
+    \end{tabular}
+    \caption{\label{tab:tth} Predictions for the process $t \bar t H$ from group III, with different functional form for the central scale.}
+\end{table}
+\end{landscape}
+
+% ttH-table kallweit scales
+\begin{table}
+    \centering
+    \begin{tabular}{cccccccccccccc}
+        $\sqrt{s}$ [TeV]  &  $m_H$ [GeV]  & \multicolumn{3}{c}{$\sigma$ [fb]}  & \multicolumn{3}{c}{$\delta_{\mu}$ ($+\delta_{\rm ThU}$)}   &  \multicolumn{3}{c}{$\delta_{\rm PDF}$}   
+        & \multicolumn{3}{c}{$\delta_{\alpha_s}$}\\
+         & & I & II & III & I & II & III & I & II & III & I & II & III\\
+        \hline
+         %\input{table_ttH} 
+    \end{tabular}
+    \caption{\label{tab:tth} Predictions for the process $t \bar t H$.}
+\end{table}
+\clearpage
+
+
+\section{$tH$}
+As far as $tH$ is concerned, three main production mechanisms concur: $t$-channel, $s$-channel and $tWH$ associated production. State-of-the-art predictions
+for these processes include corrections up to NLO QCD~\cite{Demartin:2015uha,Demartin:2016axk} as well as NLO EW~\cite{Pagani:2020mov}. When
+the latter are considered, however, interferences between the three production channels cannot be neglected. Thus, the impact of EW corrections can be only assessed
+by considering all the channels together (possibly imposing the selection cuts which enhance a given channel). In this case, the effect on the inclusive
+cross section has been found in Ref.~\cite{Pagani:2020mov} to be about $-3.5\%$. Given the rather low rate of these processes, EW
+corrections are not included in the reference cross sections.\\
+
+All single-top and Higgs cross-sections presented below are computed with {\sc MadGraph5\_aMC@NLO}~\cite{Alwall:2014hca,Frederix:2018nkq}. 
+
+\subsection{$t$-channel}
+We show predictions for $t$-channel single-top and Higgs associated production in Tabs.~\ref{tab:th-t-tot}, \ref{tab:th-t-top}~and~\ref{tab:th-t-atop},
+respectively for the processes $tH + \bar t H$, $tH$ and $\bar t H$, at NLO QCD accuracy, following Ref.~\cite{Demartin:2015uha}. The 
+central value of the cross section is computed in the five-flavour scheme. 
+The central value of the renormalisation and factorisation scales is set to
+\begin{equation}
+    \mu_{R,F}^0 = \frac{m_H+m_t}{4}\,.
+\end{equation}
+The flavour-scheme and scale-variation uncertainty is computed by considering the envelope of the 
+nine-point scale variations (obtained varying $ \mu_{R,F}^0$ by a factor 2 up and down) in the four- and five-flavour schemes.
+
+% single top, t-channel
+\begin{table}
+    \centering
+    \begin{tabular}{cccccc}
+        $\sqrt{s}$ [TeV]  &  $m_H$ [GeV]  &  $\sigma$ [fb]  & $\delta_{\mu}$   &  $\delta_{\rm PDF}$   & $\delta_{\alpha_s}$\\
+        \hline
+         %\input{table_tH-5F__tot.tex} 
+    \end{tabular}
+    \caption{\label{tab:th-t-tot} Predictions for the process $tH + \bar t H$, $t$-channel.}
+\end{table}
+%
+\begin{table}
+    \centering
+    \begin{tabular}{cccccc}
+        $\sqrt{s}$ [TeV]  &  $m_H$ [GeV]  &  $\sigma$ [fb]  & $\delta_{\mu}$   &  $\delta_{\rm PDF}$   & $\delta_{\alpha_s}$\\
+        \hline
+         %\input{table_tH-5F__top.tex} 
+    \end{tabular}
+    \caption{\label{tab:th-t-top} Predictions for the process $tH$, $t$-channel.}
+\end{table}
+%
+\begin{table}
+    \centering
+    \begin{tabular}{cccccc}
+        $\sqrt{s}$ [TeV]  &  $m_H$ [GeV]  &  $\sigma$ [fb]  & $\delta_{\mu}$   &  $\delta_{\rm PDF}$   & $\delta_{\alpha_s}$\\
+        \hline
+         %\input{table_tH-5F__atop.tex} 
+    \end{tabular}
+    \caption{\label{tab:th-t-atop} Predictions for the process $\bar tH$, $t$-channel.}
+\end{table}
+
+
+\subsection{$s$-channel}
+We show predictions for $s$-channel single-top and Higgs associated production in Tabs.~\ref{tab:th-s-tot}, \ref{tab:th-s-top}~and~\ref{tab:th-s-atop},
+respectively for the processes $tH + \bar t H$, $tH$ and $\bar t H$, at NLO QCD accuracy, following Ref.~\cite{Demartin:2015uha}. The central 
+value of the cross section is computed in the five-flavour scheme. 
+The central value of the renormalisation and factorisation scales is set to
+\begin{equation}
+    \mu_{R,F}^0 = \frac{m_H+m_t}{2}\,.
+\end{equation}
+The scale-variation uncertainty is computed by considering the envelope of the 
+nine-point scale variations (obtained varying $ \mu_{R,F}^0$ by a factor 2 up and down).
+
+% single top, s-channel
+\begin{table}
+    \centering
+    \begin{tabular}{cccccc}
+        $\sqrt{s}$ [TeV]  &  $m_H$ [GeV]  &  $\sigma$ [fb]  & $\delta_{\mu}$   &  $\delta_{\rm PDF}$   & $\delta_{\alpha_s}$\\
+        \hline
+         %\input{table_tH-sch__tot.tex} 
+    \end{tabular}
+    \caption{\label{tab:th-s-tot} Predictions for the process $tH + \bar t H$, $s$-channel.}
+\end{table}
+%
+\begin{table}
+    \centering
+    \begin{tabular}{cccccc}
+        $\sqrt{s}$ [TeV]  &  $m_H$ [GeV]  &  $\sigma$ [fb]  & $\delta_{\mu}$   &  $\delta_{\rm PDF}$   & $\delta_{\alpha_s}$\\
+        \hline
+         %\input{table_tH-sch__top.tex} 
+    \end{tabular}
+    \caption{\label{tab:th-s-top} Predictions for the process $tH$, $s$-channel.}
+\end{table}
+%
+\begin{table}
+    \centering
+    \begin{tabular}{cccccc}
+        $\sqrt{s}$ [TeV]  &  $m_H$ [GeV]  &  $\sigma$ [fb]  & $\delta_{\mu}$   &  $\delta_{\rm PDF}$   & $\delta_{\alpha_s}$\\
+        \hline
+         %\input{table_tH-sch__atop.tex} 
+    \end{tabular}
+    \caption{\label{tab:th-s-atop} Predictions for the process $\bar tH$, $s$-channel.}
+\end{table}
+
+\subsection{$tWH$}
+We show predictions $tWH$ associated production in Tabs.~\ref{tab:thw-tot}, where the cross section for the process $tHW^-$ and $\bar t HW^+$ are summed. Each
+process, taken alone, contributes to half the cross section. Numbers have been computed at NLO QCD accuracy following Ref.~\cite{Demartin:2016axk}. In particular, the ``diagram removal with interference'' (DR2)
+approach, as implemented in the {\sc MadSTR} plugin~\cite{Frixione:2019fxg}, is employed to subtract contributions from resonant top quarks which appear at NLO.
+The central value of the renormalisation and factorisation scales is set to
+\begin{equation}
+    \mu_{R,F}^0 = \frac{m_H+m_t+m_W}{2}\,.
+\end{equation}
+The scale-variation uncertainty is computed by considering the envelope of the 
+nine-point scale variations (obtained varying $ \mu_{R,F}^0$ by a factor 2 up and down).
+
+\begin{table}
+    \centering
+    \begin{tabular}{cccccc}
+        $\sqrt{s}$ [TeV]  &  $m_H$ [GeV]  &  $\sigma$ [fb]  & $\delta_{\mu}$   &  $\delta_{\rm PDF}$   & $\delta_{\alpha_s}$\\
+        \hline
+         %\input{table_tH-w__tot.tex} 
+    \end{tabular}
+    \caption{\label{tab:thw-tot} Predictions for the process $tHW^- + \bar t HW^+$ (with DR2). The rate of each of the two processes taken alone is
+half of the rate of their sum.}
+\end{table}
+
+
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{JHEP}
+\bibliography{biblio}
+
+\end{document}
+
