@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.13)  30 AUG 2023 14:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.13)  4 SEP 2023 12:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -490,20 +490,20 @@ LaTeX Warning: Label `tab:tth' multiply defined.
 )
 \openout1 = `report_tth_xsect.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 674.
-LaTeX Font Info:    ... okay on input line 674.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 674.
-LaTeX Font Info:    ... okay on input line 674.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 674.
-LaTeX Font Info:    ... okay on input line 674.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 674.
-LaTeX Font Info:    ... okay on input line 674.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 674.
-LaTeX Font Info:    ... okay on input line 674.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 674.
-LaTeX Font Info:    ... okay on input line 674.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 674.
-LaTeX Font Info:    ... okay on input line 674.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 676.
+LaTeX Font Info:    ... okay on input line 676.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 676.
+LaTeX Font Info:    ... okay on input line 676.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 676.
+LaTeX Font Info:    ... okay on input line 676.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 676.
+LaTeX Font Info:    ... okay on input line 676.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 676.
+LaTeX Font Info:    ... okay on input line 676.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 676.
+LaTeX Font Info:    ... okay on input line 676.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 676.
+LaTeX Font Info:    ... okay on input line 676.
  (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count140
@@ -533,7 +533,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box32
-Package hyperref Info: Link coloring ON on input line 674.
+Package hyperref Info: Link coloring ON on input line 676.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -543,9 +543,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count146
 )
-LaTeX Info: Redefining \ref on input line 674.
-LaTeX Info: Redefining \pageref on input line 674.
-LaTeX Info: Redefining \nameref on input line 674.
+LaTeX Info: Redefining \ref on input line 676.
+LaTeX Info: Redefining \pageref on input line 676.
+LaTeX Info: Redefining \nameref on input line 676.
 
 (./report_tth_xsect.out) (./report_tth_xsect.out)
 \@outlinefile=\write5
@@ -556,28 +556,28 @@ Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count147
-LaTeX Font Info:    Try loading font information for U+msa on input line 675.
+LaTeX Font Info:    Try loading font information for U+msa on input line 677.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 675.
+LaTeX Font Info:    Try loading font information for U+msb on input line 677.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 675.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 677.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 675.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 677.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <142.26378> not available
-(Font)              size <24.88> substituted on input line 675.
+(Font)              size <24.88> substituted on input line 677.
 
 [0{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
@@ -589,219 +589,219 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <142.26378> not available
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 682.
+(hyperref)                removing `math shift' on input line 684.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 682.
+(hyperref)                removing `math shift' on input line 684.
 
 
 Package natbib Warning: Citation `Reina:2001sf' on page 1 undefined on input li
-ne 683.
+ne 685.
 
 
 Package natbib Warning: Citation `Reina:2001bc' on page 1 undefined on input li
-ne 683.
+ne 685.
 
 
 Package natbib Warning: Citation `Dawson:2002tg' on page 1 undefined on input l
-ine 683.
+ine 685.
 
 
 Package natbib Warning: Citation `Frixione:2014qaa' on page 1 undefined on inpu
-t line 684.
+t line 686.
 
 
 Package natbib Warning: Citation `Zhang:2014gcy' on page 1 undefined on input l
-ine 684.
+ine 686.
 
 
 Package natbib Warning: Citation `Frixione:2015zaa' on page 1 undefined on inpu
-t line 684.
+t line 686.
 
 
 Package natbib Warning: Citation `Frederix:2018nkq' on page 1 undefined on inpu
-t line 684.
+t line 686.
 
 
 Package natbib Warning: Citation `Broggio:2015lya' on page 1 undefined on input
- line 686.
+ line 688.
 
 
 Package natbib Warning: Citation `Kulesza:2015vda' on page 1 undefined on input
- line 686.
+ line 688.
 
 
 Package natbib Warning: Citation `Broggio:2016lfj' on page 1 undefined on input
- line 686.
+ line 688.
 
 
 Package natbib Warning: Citation `Kulesza:2017ukk' on page 1 undefined on input
- line 686.
+ line 688.
 
 
 Package natbib Warning: Citation `Catani:2022mfv' on page 1 undefined on input 
-line 688.
+line 690.
 
 
 Package natbib Warning: Citation `Kulesza:2018tqz' on page 1 undefined on input
- line 689.
+ line 691.
 
 
 Package natbib Warning: Citation `Broggio:2019ewu' on page 1 undefined on input
- line 689.
+ line 691.
 
 
 Package natbib Warning: Citation `Kulesza:2020nfh' on page 1 undefined on input
- line 689.
+ line 691.
 
 
 Package natbib Warning: Citation `Broggio:2019ewu' on page 1 undefined on input
- line 693.
+ line 695.
 
 
 Package natbib Warning: Citation `Broggio:2019ewu' on page 1 undefined on input
- line 694.
+ line 696.
 
 
 Package natbib Warning: Citation `Broggio:2019ewu' on page 1 undefined on input
- line 697.
+ line 699.
 
 
 Package natbib Warning: Citation `Broggio:2019ewu' on page 1 undefined on input
- line 705.
+ line 707.
 
 [1]
 
 Package natbib Warning: Citation `Kulesza:2018tqz' on page 2 undefined on input
- line 710.
+ line 712.
 
 
 Package natbib Warning: Citation `Kulesza:2020nfh' on page 2 undefined on input
- line 710.
+ line 712.
 
 
-Overfull \hbox (84.79704pt too wide) in paragraph at lines 718--723
+Overfull \hbox (84.79704pt too wide) in paragraph at lines 720--725
 \OT1/cmr/m/n/10.95 Pdfs: PDF4LHC21[]40[]pdfas [] for QCD-initiated chan-nels an
 d LUXqed17[]plus[]PDF4LHC15[]nnlo[]100 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 718--723
+Underfull \hbox (badness 10000) in paragraph at lines 720--725
 
  []
 
 
-Overfull \hbox (9.84305pt too wide) in paragraph at lines 724--725
+Overfull \hbox (9.84305pt too wide) in paragraph at lines 726--727
 \OT1/cmr/m/n/10.95 put from aMC@NLO for these chan-nels run with LUXqed17[]plus
 []PDF4LHC15[]nnlo[]100
  []
 
 
 Package natbib Warning: Citation `Catani:2022mfv' on page 2 undefined on input 
-line 725.
+line 727.
 
 
 LaTeX Warning: Reference `tab:kallweit-scale' on page 2 undefined on input line
- 736.
+ 738.
 
 
 Package natbib Warning: Citation `Alwall:2014hca' on page 2 undefined on input 
-line 738.
+line 740.
 
 
 Package natbib Warning: Citation `Frederix:2018nkq' on page 2 undefined on inpu
-t line 738.
+t line 740.
 
 [2] (./table_ttH_kallweit.tex)
-Overfull \hbox (20.52304pt too wide) in paragraph at lines 744--758
+Overfull \hbox (20.52304pt too wide) in paragraph at lines 746--760
  [][] 
  []
 
 [3] (./table_ttH.tex)
-Overfull \hbox (72.87047pt too wide) in paragraph at lines 765--772
+Overfull \hbox (72.87047pt too wide) in paragraph at lines 767--774
  [][] 
  []
 
 [4]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 777.
+(hyperref)                removing `math shift' on input line 779.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 777.
+(hyperref)                removing `math shift' on input line 779.
 
 
 Package natbib Warning: Citation `Demartin:2015uha' on page 5 undefined on inpu
-t line 779.
+t line 781.
 
 
 Package natbib Warning: Citation `Demartin:2016axk' on page 5 undefined on inpu
-t line 779.
+t line 781.
 
 
 Package natbib Warning: Citation `Pagani:2020mov' on page 5 undefined on input 
-line 779.
+line 781.
 
 
 Package natbib Warning: Citation `Pagani:2020mov' on page 5 undefined on input 
-line 782.
+line 784.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 778--784
+Underfull \hbox (badness 10000) in paragraph at lines 780--786
 
  []
 
 
 Package natbib Warning: Citation `Alwall:2014hca' on page 5 undefined on input 
-line 785.
+line 787.
 
 
 Package natbib Warning: Citation `Frederix:2018nkq' on page 5 undefined on inpu
-t line 785.
+t line 787.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 787.
+(hyperref)                removing `math shift' on input line 789.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 787.
+(hyperref)                removing `math shift' on input line 789.
 
 
 Package natbib Warning: Citation `Demartin:2015uha' on page 5 undefined on inpu
-t line 789.
+t line 791.
 
 (./table_tH-5F__tot.tex) (./table_tH-5F__top.tex) (./table_tH-5F__atop.tex)
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 830.
+(hyperref)                removing `math shift' on input line 832.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 830.
+(hyperref)                removing `math shift' on input line 832.
 
 
 Package natbib Warning: Citation `Demartin:2015uha' on page 5 undefined on inpu
-t line 832.
+t line 834.
 
 (./table_tH-sch__tot.tex) (./table_tH-sch__top.tex) (./table_tH-sch__atop.tex)
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 872.
+(hyperref)                removing `math shift' on input line 874.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 872.
+(hyperref)                removing `math shift' on input line 874.
 
 
 Package natbib Warning: Citation `Demartin:2016axk' on page 5 undefined on inpu
-t line 874.
+t line 876.
 
 
 Package natbib Warning: Citation `Frixione:2019fxg' on page 5 undefined on inpu
-t line 875.
+t line 877.
 
 [5
 
@@ -812,12 +812,12 @@ No file report_tth_xsect.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 899.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 901.
 [6] [7] [8] [9] [10] [11] [12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 899.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 901.
  (./report_tth_xsect.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 899.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 899.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 901.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 901.
 Package rerunfilecheck Info: File `report_tth_xsect.out' has not changed.
 (rerunfilecheck)             Checksum: 221CF27072B0BBCDAEA376DCCB54B859;295.
 
@@ -831,13 +831,13 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 899.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 901.
  ) 
 Here is how much of TeX's memory you used:
- 11064 strings out of 493014
- 162147 string characters out of 6133351
- 299753 words of memory out of 5000000
- 14357 multiletter control sequences out of 15000+600000
+ 11065 strings out of 493014
+ 162155 string characters out of 6133351
+ 299889 words of memory out of 5000000
+ 14358 multiletter control sequences out of 15000+600000
  19943 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,12n,42p,308b,431s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -860,7 +860,7 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2
 016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/201
 6/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report_tth_xsect.pdf (13 pages, 263154 bytes).
+Output written on report_tth_xsect.pdf (13 pages, 265131 bytes).
 PDF statistics:
  209 PDF objects out of 1000 (max. 8388607)
  39 named destinations out of 1000 (max. 500000)
